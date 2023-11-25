@@ -1,0 +1,66 @@
+.title {
+  margin: 2rem;
+  margin-bottom: 0rem;
+  text-align: center;
+}
+
+.subtitle {
+  margin-left: 4rem;
+  margin-right: 4rem;
+  font-size: 4rem;
+  width: 100%;
+}
+
+.condition {
+  margin:1rem;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.col-12 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+button {
+  width: 50%;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  button {
+    width: 25%;
+  }
+  .title{
+    text-align: left;
+  }
+  .subtitle {
+    font-size: 6rem;
+    width: 50%;
+  }
+}
+
+.accent {
+  color: #f17e91
+}
+
+.btn-nft {
+  background-color: #f17e91;
+}
+
+.btn-nft:hover {
+  background-color: #e95a74;
+  text-transform: uppercase;
+}
+
+.btn-connect {
+  background-color: #f17e91;
+}
+
+.btn-connect:hover {
+  background-color: #e95a74;
+  text-transform: uppercase;
+}
