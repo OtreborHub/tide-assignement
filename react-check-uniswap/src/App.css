@@ -1,19 +1,25 @@
+.main {
+  background-color: #292727;
+  width: 100%;
+  color: white;
+}
+
 .title {
-  margin: 2rem;
-  margin-bottom: 0rem;
-  text-align: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+.row {
+  margin: 0rem;
 }
 
 .subtitle {
-  margin-left: 4rem;
-  margin-right: 4rem;
   font-size: 4rem;
   width: 100%;
 }
 
 .condition {
-  margin:1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
   font-size: 1.2rem;
 }
 
@@ -26,13 +32,15 @@
 }
 
 button {
-  width: 50%;
   margin-bottom: 1rem;
 }
 
 @media only screen and (min-width: 1200px) {
   button {
     width: 25%;
+  }
+  .main {
+    height: 100vh;
   }
   .title{
     text-align: left;
@@ -42,6 +50,39 @@ button {
     width: 50%;
   }
 }
+
+@media only screen and (max-width: 1200px) {
+  button {
+    width: 50%;
+  }
+  .main {
+    height: 100vh;
+  }
+  .title{
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 4rem;
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  button {
+    width: 50%;
+  }
+  .main {
+    height: fit-content
+  }
+  .title{
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 3rem;
+    width: 75%;
+  }
+}
+
 
 .accent {
   color: #f17e91
