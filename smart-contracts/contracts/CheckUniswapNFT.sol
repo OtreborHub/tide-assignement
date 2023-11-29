@@ -26,7 +26,8 @@ contract CheckUniswapNFT is ERC721URIStorage, Ownable {
         _safeMint(msg.sender, tokenId);
        
         //create tokenURI
-        //_setTokenURI(tokenId, tokenURI);
+        string memory tokenURI = "https://cryptologos.cc/logos/uniswap-uni-logo.png";
+        _setTokenURI(tokenId, tokenURI);
 
         userTokenId[msg.sender] = tokenId;
         ( ,_tokenIds) = Math.tryAdd(_tokenIds, 1);

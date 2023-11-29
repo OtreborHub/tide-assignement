@@ -59,8 +59,6 @@ export default function App() {
     }
   }
 
-  
-
   //ETHERSCAN
   async function walletTransaction(ethereumAddress: string, chainId: number){
     const res = await getEtherscanTransaction(ethereumAddress, chainId);
@@ -77,6 +75,7 @@ export default function App() {
     const now = Date.now();
     const from = now - 86400000; // 1 Giorno
     var transactions: EtherscanTransaction[] = [];
+
     console.log ( "filter transaction from: " + from + " to " + now);
     results.forEach((transaction: EtherscanTransaction) => {
       var timestamp = Number(transaction.timeStamp) * 1000;
@@ -85,7 +84,6 @@ export default function App() {
       }
     });
 
-    console.log(transactions);
     return transactions;
   }
 
@@ -110,7 +108,6 @@ export default function App() {
           }
 
         } catch (error) {
-          // console.error('Errore:', error);
           throw error;  // Rilancia l'errore per farlo catturare da Promise.all
         }
       });
@@ -118,40 +115,36 @@ export default function App() {
       try {
         await Promise.all(transactionPromises);
       } catch (error) {
-        // console.log("At least one Uniswap transaction not found");
         showPopUp("Something's missing!","Be sure your wallet had a transition to Uniswap in the last 24h", "error");
       }
 
     }
-  
-    const testing = true;
-    if( testing ) {
-      isValidTransaction(true);
-    }
+    
+    // For mint testing uncomment
+    // const testing = true;
+    // if( testing ) {
+    //   isValidTransaction(true);
+    // }
 
   }
-
-
 
   async function mint(){
     try {
         Web3Bridge(provider);
         const contract = getCheckUniswapContract();
-        console.log(contract);
         const contractExist:boolean = await getEtherscanContract(contract._address, chainId);
       if(contractExist){
         const tokenId = await mintWelcomeNFT(account)
-        // .then((result: any) => {
-        //   console.log(result);
-        // });
-        showPopUp("Welcome NFT Minted", "Token ID: #" + tokenId, "success");
+        .then((result: any) => {
+          showPopUp("Welcome NFT Minted", "Token ID: #" + tokenId, "success");
+        });
         console.log(tokenId);
       } else {
         throw new Error("No contract found on Etherscan");
       }
 
     } catch (error) {
-      showPopUp("Transaction not sendable", "Be sure you're connected to the right network", "error");
+      showPopUp("Transaction not sent", "Something goes wrong in the minting process. Please try later.", "error");
     }
   }
 
